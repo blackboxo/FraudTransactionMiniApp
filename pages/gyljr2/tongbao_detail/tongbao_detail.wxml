@@ -1,0 +1,42 @@
+<!--pages/gyljr/tongbao_detail/tongbao_detail.wxml-->
+<view>
+  <p class="title_block">交易信息</p> 
+  <p class="block">交易主体</p> 
+  <van-cell title="交易发起方" value="{{source_name}}" data-name="{{source_name}}" bindtap="navToCompDetail"></van-cell>
+  <van-cell title="交易接受方" value="{{target_name}}"></van-cell>
+  <p class="block">交易记录</p> 
+  <view>
+    <view>
+    <!-- <block wx:for='{{tb_data}}' wx:key="index">
+      <view style="padding: 5rpx 50rpx; color: #797676dc; ">       
+        <view wx:if="{{item['来源企业']==source_name&&item['本次通宝接收方']==target_name}}" style="text-decoration:underline"><text style="font-weight: bold;">{{item['来源企业']}} </text>转让金额<text style="color: rgb(110, 110, 8);"> {{item['初始通宝接收金额(元)']}} </text>元给 <text style="font-weight:bold">{{item['本次通宝接收方']}}</text>
+        </view>
+        <view wx:else><text style="font-weight: bold;">{{item['来源企业']}} </text>转让金额<text style="color: rgb(110, 110, 8);"> {{item['初始通宝接收金额(元)']}} </text>元给 <text style="font-weight:bold">{{item['本次通宝接收方']}}</text>
+        </view>
+      </view>
+    </block> -->
+    <view style="display: flex;justify-content: center;">
+      <table-view 
+      header-row-class-name="header-class"
+      headers="{{tableHeader}}" 
+      data="{{ row }}" 
+      stripe="{{ stripe }}"
+      border="{{ border }}"
+    /></view>
+  </view>
+  </view>
+  <p class="block">交易图谱</p> 
+  <scroll-view>
+    <!-- <view class="echart" style="{{loading?'margin-left:50000rpx':'margin-left:0px'}}">
+      <ec-canvas id="mychart-dom-bar2" type="2d" canvas-id="mychart-bar2" ec="{{ ec }}" ></ec-canvas>
+    </view> -->
+    <view class="myEchart" >
+    <ec-canvas id="mychart-dom-bar11" canvas-id="mychart-bar11" ec="{{ ec }}" ></ec-canvas>
+  </view>
+  </scroll-view> 
+  <!-- <van-cell title="风险图谱" value="内容" use-label-slot>
+    <view slot="label">
+      描述
+    </view>
+  </van-cell> -->
+</view>

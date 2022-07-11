@@ -1,0 +1,39 @@
+
+<view style="background-color: #eeeeee;min-height: 100vh;">
+  <view style="padding-top: 20px;">
+    <van-cell-group inset>
+      <van-cell center title="企业信息查询" use-label-slot>
+        <view slot="label">
+          <van-cell-group>
+            <van-field
+              model:value="{{ debtor }}"
+              placeholder="请输入企业名称"
+              label="企业名称"
+            />
+            <van-field
+              model:value="{{ debtee }}"
+              placeholder="（选填）"
+              label="法人代表"
+            />
+            <van-field
+              model:value="{{ fund_provider }}"
+              label="统一信用代码"
+              placeholder="（选填）"
+            />
+          </van-cell-group>
+          <view>
+            <van-button round block size="small" type="primary" bind:click="goToSearchTransaction">查询报告</van-button>
+          </view>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+
+  <van-tabbar placeholder active="{{ tabActive }}" bind:change="tabChange">
+    <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+    <van-tabbar-item icon="search">查企业</van-tabbar-item>
+    <van-tabbar-item icon="friends-o">查交易</van-tabbar-item>
+    <!-- <van-tabbar-item icon="setting-o">查承兑</van-tabbar-item> -->
+    <van-tabbar-item icon="chat-o">风险管家</van-tabbar-item>
+  </van-tabbar>
+</view>

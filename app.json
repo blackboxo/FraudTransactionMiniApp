@@ -1,0 +1,41 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/graph/graph",
+    "pages/people/people",
+    "pages/transaction/transaction",
+    "pages/link/link",
+    "pages/project/project",
+    "pages/event/event",
+    "pages/consensus/consensus",
+    "pages/holder/holder",
+    "pages/tourong/tourong",
+    "pages/report/report",
+    "pages/logs/logs",
+    "pages/gyljr/index/index",
+    "pages/gyljr/detail/detail",
+    "pages/gyljr/transaction_index/transaction_index",
+    "pages/gyljr/transaction_detail/transaction_detail",
+    "pages/gyljr/transaction_input/transaction_input",
+    "pages/gyljr/transaction_analysis/transaction_analysis",
+    "pages/gyljr/tongbao/tongbao",
+    "pages/gyljr/tongbao_detail/tongbao_detail",
+    "pages/gyljr/tongbao2/tongbao_comp_detail/tongbao_comp_detail",
+    "pages/gyljr2/guanjia/guanjia",
+    "pages/gyljr2/chengdui/chengdui",
+    "pages/gyljr2/search_transaction/search_transaction",
+    "pages/gyljr2/search_bussiness/search_bussiness",
+    "pages/gyljr2/transaction_index/transaction_index",
+    "pages/gyljr2/input_transaction/input_transaction",
+    "pages/gyljr2/chatbot/chatbot",
+    "pages/gyljr2/tongbao_detail/tongbao_detail",
+    "pages/gyljr2/tongbao2/tongbao_comp_detail/tongbao_comp_detail"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#58bd6a",
+    "navigationBarTitleText": "交易风险预警",
+    "navigationBarTextStyle": "black"
+  },
+  "sitemapLocation": "sitemap.json"
+}

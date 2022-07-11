@@ -1,0 +1,49 @@
+/* pages/gyljr/transaction_analysis/transaction_analysis.wxss */
+.title{
+  padding:10rpx 40rpx;
+  font-size: small;
+  color: darkgray;
+}
+
+.progress{
+  margin: 10rpx 40rpx;
+}
+.myechart{  
+  display: block;
+  height: 600rpx;
+  width: 100%;
+}
+.ec-canvas{
+  width: 100%;
+  height: 100%;
+}
+.block{
+  font-size: 28rpx;
+  margin: 30rpx;
+  color: #1357c5;
+  display: block;
+  font-weight: bold;
+}
+
+canvas{
+  width: 100%;
+  height: 100%;
+}
+
+.myEchart{  
+  display: block;
+  height: 800rpx;
+  width: 100%;
+  margin-top: 40rpx;
+
+  /* position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  box-sizing: border-box; */
+}

@@ -1,0 +1,151 @@
+<van-tabs active="{{ active }}" swipeable="true" sticky="true" bind:change="onTab">
+  <van-tab title="异常预警">
+       <!-- <van-card class="card"
+      title="交易账户">
+      <view  class="price" slot="price">
+        <p>{{comp.risk!=""?'异常指数':''}}</p>
+      </view>
+      <view class="num" style="{{comp.risk>60?'color:red':'color:green'}}" slot="num">
+        <p>{{comp.risk!=null?comp.risk:'暂无'}}</p>
+      </view>
+    </van-card> -->
+   <!-- <p class="block">异常交易信息</p> 
+   <van-cell-group>
+    <van-cell  title="交易分拆" label="该交易涉嫌被分拆用于虚构交易"/>
+  </van-cell-group> -->
+   <p class="block">异常交易信息</p> 
+   <van-cell  title="{{transaction.order_status}}" label="{{transaction.abnormal_analysis}}"/>
+   <p class="block">历史风险分析</p> 
+   <van-cell  title="申请人近期违规情况" label="申请人因涉金融领域违法行为上征信黑名单"/>
+   <van-cell  title="所在区域近期违规情况" label="申请人近期存在多次贷款申请记录"/>
+   <van-cell  title="所在区域近期违规情况" label="交易发生地近期不良贷款发生率较高"/>
+   <p class="block">关联风险分析</p> 
+   <van-cell  title="关联异常" label="多个账户共用当前设备，且存在未通过的贷款申请"/>
+   <scroll-view>
+    <view class="load">
+    <!-- <van-loading color="#1989fa" /> -->
+    <van-button icon="cluster-o" type="info" size="small" bind:click="toVisible">查看可视化分析</van-button>
+    </view>
+    <view class="echart" style="{{loading?'margin-left:50000rpx':'margin-left:0px'}}">
+      <ec-canvas id="mychart-dom-bar2" type="2d" canvas-id="mychart-bar2" ec="{{ ec }}" ></ec-canvas>
+    </view>
+  </scroll-view> 
+</van-tab>
+ <!-- <van-tab title="项目历史">
+  <van-card class="card" wx:for="{{ historyProjects }}" wx:for-item="project" data-index="{{index}}" data-id="{{project.id}}" bindtap="bindProjectTap" title="{{project.title}}">
+        <view class="card_desc" slot="desc">
+          <p class="pcomp">\n</p>
+          <p class="pcomp_title">投标企业:</p>
+          <p>{{project.relatedComp}}</p>
+          <p class="pcomp">\n</p>
+        </view>
+        <view  class="price" slot="price">
+          <p>{{project.risk!=""?'综合风险指数':''}}</p>
+        </view>
+        <view class="num" style="{{project.risk>60?'color:red':'color:green'}}" slot="num">
+          <p>{{project.risk!=null?project.risk:'暂无'}}</p>
+        </view>
+      </van-card>
+  </van-tab> -->
+  <van-tab title="关联信息">
+    <van-collapse value="{{ activeNames }}" bind:change="onChange" >
+      <van-collapse-item title="关联信息" name="1">
+        <van-cell title="关联账户" value="ta2021102714282" />
+        <van-cell title="关联设备" value="fgp2021102714261"/>
+        <!-- <van-cell title="关联设备" label="{{item[2]}}" value="{{item[1][0]}}" wx:for="{{ companys }}" bindtap="getCorrelation" data-name="{{item[0]}}"/> -->
+      </van-collapse-item>
+      <!-- <van-collapse-item title="关联设备" name="2">
+        <van-cell title="项目名称" value="风险程度" />
+        <van-cell wx:for="{{ projects }}" title="{{item[0]}}" value="{{item[1]}}" data-title="{{item[0]}}" bindtap="getProjectDetail"/>
+      </van-collapse-item> -->
+    </van-collapse>
+    <scroll-view>
+    <view class="load">
+      <van-button icon="cluster-o" type="info" size="small" bind:click="toVisible">查看可视化分析</van-button>
+    </view>
+    </scroll-view>
+  </van-tab>
+  <van-tab title="基本信息">
+      <van-cell title="类型" value="{{transaction.prod_name}}" />
+      <van-cell title="申请金额" value="{{transaction.apply_amount}}元" />
+      <van-cell title="申请时间" value="{{transaction.apply_time}}" />
+      <van-cell title="申请期限" value="{{transaction.apply_limit}}" />
+      <van-cell title="订单状态" value="{{transaction.order_status}}" />
+      <van-cell title="申请人近期违规情况" value="申请人因涉金融领域违法行为上征信黑名单" />
+      <van-cell title="所在区域近期违规情况" value="交易发生地近期不良贷款发生率较高" />
+      <van-cell title="申请人近期申请贷款情况" value="申请人近期存在多次贷款申请记录" />
+      <!-- <van-cell title="异常分析" value="{{transaction.abnormal_analysis}}" /> -->
+  </van-tab>
+  <!-- <van-tab title="舆情信息"> 
+    <van-card class="card" wx:for="{{ consensuses }}" wx:for-item="consensus" data-index="{{index}}" bindtap="bindConsensusTap" title="{{consensus.title}}">
+        <view  class="price" slot="price">
+          <p>情感评分</p>
+        </view>
+        <view class="num" style="{{consensus.score>=0?'color:green':'color:red'}}" slot="num">
+          <p>{{consensus.score}}</p>
+        </view>
+      </van-card>
+          <p class="bchain">*数据取自可信中国区块链</p>
+  </van-tab>
+  <van-tab title="信誉信息" disabled="{{!show}}">
+    <van-collapse value="{{ activeBasic }}" bind:change="onChangeBasic">
+      <van-collapse-item title="信息可信度" name="1">
+        <van-cell title="溯源性">
+          <view>
+            <van-rate readonly value="{{ credit.STAFF }}"/>
+          </view>
+        </van-cell>
+        <van-cell title="完整性">
+          <view>
+            <van-rate readonly value="{{ credit.COMPLETENESS }}"/>
+          </view>
+        </van-cell>
+        <van-cell title="时效性">
+          <view>
+            <van-rate readonly value="{{ credit.TIMELINESS }}"/>
+          </view>
+        </van-cell>
+        <van-cell title="权威性">
+          <view>
+            <van-rate readonly value="{{ credit.AUTHORITY }}"/>
+          </view>
+        </van-cell>
+      </van-collapse-item>
+      <van-collapse-item title="企业美誉度" name="2">
+        <van-cell title="品牌形象">
+          <view>
+            <van-rate color="#2d8cf0"
+              void-color="#c7c7c7" icon="diamond"
+              void-icon="diamond-o" readonly value="{{ credit.BRAND }}"/>
+          </view>
+        </van-cell>
+        <van-cell title="企业荣誉">
+          <view>
+            <van-rate color="#2d8cf0"
+              void-color="#c7c7c7" icon="diamond"
+              void-icon="diamond-o" readonly value="{{ credit.REPUTATION }}"/>
+          </view>
+        </van-cell>
+        <van-cell title="企业信誉">
+          <view>
+            <van-rate color="#2d8cf0"
+              void-color="#c7c7c7" icon="diamond"
+              void-icon="diamond-o" readonly value="{{ credit.TRUST }}"/>
+          </view>
+        </van-cell>
+        <van-cell title="违规情况">
+          <view>
+            <van-rate color="#2d8cf0"
+              void-color="#c7c7c7" icon="diamond"
+              void-icon="diamond-o" readonly value="{{ credit.VIOLATION }}"/>
+          </view>
+        </van-cell>
+      </van-collapse-item>
+    </van-collapse>
+    <p class="bchain">*数据取自可信中国区块链</p>
+    <view class="load">
+   
+    <van-button icon="comment-circle-o" type="info" size="small" bind:click="report">投诉建议</van-button>
+    </view>
+  </van-tab> -->
+</van-tabs>

@@ -1,0 +1,65 @@
+<!--pages/gyljr/transaction_analysis/transaction_analysis.wxml-->
+<view style="background:#f8f8f8">
+  <view style="padding:20rpx;background:#f8f8f8">
+    <van-cell-group >
+      <van-cell title="交易风险类型" icon="label-o">
+        <view slot="right-icon">
+          <van-tag wx:if="{{result.length}}" color="#ffe1e1" text-color="#ad0000" size="large" mark>自融风险</van-tag>
+        </view>
+      </van-cell>
+      <van-cell title="交易风险指数" use-label-slot icon="fire-o">
+        <van-icon slot="right-icon" name="description" class="" />
+        <view slot="label" class="myechart">
+            <ec-canvas id="mychart-dom-bar2"  canvas-id="mychart-bar2" ec="{{ ec }}" ></ec-canvas>
+        </view>
+      </van-cell>
+  
+    </van-cell-group>
+  </view>
+  <view style="padding-bottom:80rpx">
+    <!-- <view class="title">资金提供方风险</view>
+    <view class="progress">
+      <van-progress percentage="25" pivot-text="风险指数:25%" stroke-width="10" />
+    </view>
+    <view class="title">债务方风险</view>
+    <view class="progress">
+      <van-progress
+        percentage="75"
+        pivot-text="风险指数：75%"
+        pivot-color="#ee0a24"
+        color="linear-gradient(to right, #f2826a, #ee0a24)"
+        stroke-width="10"
+      />
+    </view>
+    <view class="title">债权方风险</view>
+    <view class="progress">
+      <van-progress
+        percentage="50"
+        pivot-text="风险指数:50%"
+        pivot-color="#f2826a"
+        color="#f2826a"
+        stroke-width="10"
+      />
+    </view> -->
+    <view wx:for="{{result}}" wx:key="index">
+      <view class="title">{{item['name']}}风险</view>
+      <view class="progress">
+        <van-progress 
+        percentage="{{item['predict']}}" 
+        pivot-text="风险指数{{item['predict']}}%" 
+        stroke-width="10"
+        pivot-color="{{color[index]}}"
+        color="{{color[index]}}" />
+      </view>
+    </view>
+  </view>
+  <p class="block">分析图谱</p> 
+  <scroll-view>
+    <!-- <view class="echart" style="{{loading?'margin-left:50000rpx':'margin-left:0px'}}">
+      <ec-canvas id="mychart-dom-bar2" type="2d" canvas-id="mychart-bar2" ec="{{ ec }}" ></ec-canvas>
+    </view> -->
+    <view class="myEchart" >
+    <ec-canvas id="mychart-dom-bar12" canvas-id="mychart-bar12" ec="{{ ec2 }}" ></ec-canvas>
+  </view>
+  </scroll-view> 
+</view>

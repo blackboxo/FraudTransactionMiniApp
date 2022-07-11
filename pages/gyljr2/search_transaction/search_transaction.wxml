@@ -1,0 +1,57 @@
+
+<view style="background-color: #eeeeee;min-height: 100vh;">
+  <view style="padding-top: 20px;">
+    <van-cell-group inset>
+      <van-cell center title="交易风险评估报告" use-label-slot>
+        <view slot="label">
+          <van-cell-group>
+            <van-field
+              model:value="{{ debtor }}"
+              placeholder="请输入债务人"
+              label="还款方(买方)"
+            />
+            <van-field
+              model:value="{{ debtee }}"
+              placeholder="请输入债权人"
+              label="发起者(卖方)"
+            />
+            <van-field
+              model:value="{{ fund_provider }}"
+              label="资金提供方"
+              placeholder="请输入资金提供方"
+            />
+          </van-cell-group>
+          <view>
+            <van-button round block size="small" type="primary" bind:click="goToSearchTransaction">查询报告</van-button>
+          </view>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <!-- 事件列表 -->
+  <p class="pblock">交易历史查询</p> 
+  <view>
+    <van-card custom-class="card" wx:for="{{ tb_data_list}}" wx:for-item="transaction" wx:key="id" data-id="{{transaction['通宝编号']}}" data-source_name="{{transaction['来源企业']}}" data-target_name="{{transaction['本次通宝接收方']}}" bindtap="bindViewTap2" title="交易事件{{index+1}}">
+      <view slot="desc">
+        <view style="margin:5px">
+          <view style="font-weight:bold">交易主体：</view>
+          <view>{{transaction['来源企业']}} vs {{transaction['本次通宝接收方']}}</view>
+          <view><p style="font-weight:bold">交易金额</p>：{{transaction['初始通宝接收金额(元)']}}元</view>
+        </view>
+      </view>
+      <view slot="price">
+        <view>
+          <van-tag type="primary" plain>{{transaction['接收时间']}}</van-tag>
+        </view>
+      </view>
+    </van-card>
+  </view>
+  <p class="bchain">*数据取自可信中国区块链</p>
+  <van-tabbar placeholder active="{{ tabActive }}" bind:change="tabChange">
+    <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+    <van-tabbar-item icon="search">查企业</van-tabbar-item>
+    <van-tabbar-item icon="friends-o">查交易</van-tabbar-item>
+    <!-- <van-tabbar-item icon="setting-o">查承兑</van-tabbar-item> -->
+    <van-tabbar-item icon="chat-o">风险管家</van-tabbar-item>
+  </van-tabbar>
+</view>

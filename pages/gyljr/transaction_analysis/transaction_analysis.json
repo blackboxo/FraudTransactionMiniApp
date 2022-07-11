@@ -1,0 +1,9 @@
+{
+  "usingComponents": {
+    "van-progress": "@vant/weapp/progress/index",
+    "van-cell": "@vant/weapp/cell/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-tag": "@vant/weapp/tag/index",
+    "ec-canvas": "../../../ec-canvas/ec-canvas"
+  }
+}

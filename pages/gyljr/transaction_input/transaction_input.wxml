@@ -1,0 +1,77 @@
+<!--pages/gyljr/transaction_input/transaction_input.wxml-->
+<view>
+  <view class="_title">交易信息</view>
+  <van-cell-group>
+    <!-- <van-field
+      model:value="{{ debt_receivable_to_approval}}"
+      label="待审批账款"
+      placeholder="请输入待审批账款笔数"
+    />
+    <van-field
+      model:value="{{ debt_receivable_passed }}"
+      label="已通过账款"
+      placeholder="请输入已通过账款笔数"
+    />
+    <van-field
+      model:value="{{ debt_receivable_not_passed }}"
+      label="已拒绝账款"
+      placeholder="请输入已拒绝账款笔数"
+    /> -->
+    <van-field
+      model:value="{{ amount }}"
+      label="金额"
+      placeholder="请输入放款金额"
+    />
+    <van-field
+      model:value="{{ currency }}"
+      label="币种"
+      placeholder="请输入币种"
+    />
+    <van-field
+      model:value="{{ allotted_time }}"
+      label="账款期限"
+      placeholder="请输入账款期限（天）"
+    />
+    <van-field
+      model:value="{{ transaction_type }}"
+      label="交易类型"
+      placeholder="请输入交易类型"
+    />
+    <!-- <van-field
+      model:value="{{ financing_mode }}"
+      label="融资模式"
+      placeholder="请输入融资模式"
+    />
+    <van-field
+      model:value="{{ financing_products }}"
+      label="融资产品"
+      placeholder="请输入融资产品"
+    /> -->
+    <van-field
+      model:value="{{ debt_source }}"
+      label="账款来源"
+      placeholder="请输入账款来源"
+    />
+  </van-cell-group>
+  <view class="_title">交易参与方</view>
+  <van-cell-group>
+    <van-field
+      model:value="{{ debtor }}"
+      placeholder="请输入债务人"
+      label="还款方(买方)"
+    />
+    <van-field
+      model:value="{{ debtee }}"
+      placeholder="请输入债权人"
+      label="发起者(卖方)"
+    />
+    <van-field
+      model:value="{{ fund_provider }}"
+      label="资金提供方"
+      placeholder="请输入资金提供方"
+    />
+  </van-cell-group>
+  <view class="btn_area">
+    <van-button block color="#187ef9" bind:click="confirm">交易风险分析</van-button>
+  </view>
+</view>

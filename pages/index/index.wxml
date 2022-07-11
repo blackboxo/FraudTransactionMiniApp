@@ -1,0 +1,151 @@
+<view>
+  <view class="header">
+  <p class="head">异常交易识别｜</p>
+  <p class="summary">穿透式挖掘\n全要素、可视化\n</p>
+  </view>
+  <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="查企业">
+     <van-search
+      input-align="center"
+      placeholder="请输入企业名等关键词"
+      bind:change="onSearchComp"
+    />
+      <!-- <van-card class="card" wx:for="{{ comps }}" wx:for-item="comp" wx:key="id" data-recordNo="{{comp.recordNo}}" data-index="{{index}}" data-id="{{comp.id}}" bindtap="bindViewTap"
+      desc="描述信息"
+      title="{{comp.short_name}}"
+      desc="{{comp.desc}}"
+      thumb="{{comp.img}}">
+      <view  class="price" slot="price">
+        <p>{{comp.risk!=""?'综合异常指数':''}}</p>
+      </view>
+      <view class="num" style="{{comp.risk>60?'color:red':'color:green'}}" slot="num">
+        <p>{{comp.risk!=null?comp.risk:'暂无'}}</p>
+      </view>
+    </van-card> -->
+    <van-card class="card" wx:for="{{ comps }}" wx:for-item="comp" wx:key="id" data-recordNo="{{comp.recordNo}}" data-index="{{index}}" data-id="{{comp.id}}" data-gid="{{comp.gid}}" bindtap="bindViewTap"
+      desc="描述信息"
+      title="{{comp.name}}"
+      desc="{{comp.business_scope}}"
+      thumb="{{comp.img}}">
+      <view  class="price" slot="price">
+        <p>{{comp.risk!=""?'综合异常指数':''}}</p>
+      </view>
+      <view class="num" style="{{comp.is_illegal==1?'color:red':'color:green'}}" slot="num">
+        <p>{{comp.is_illegal=='1'?'涉嫌非法集资':'暂无'}}</p>
+      </view>
+    </van-card>
+        <p class="bchain">*数据取自可信中国区块链</p>
+      </van-tab>
+    <van-tab title="查人员">
+         <van-search
+          input-align="center"
+          placeholder="请输入招投标项目名等关键词"
+          bind:search="onSearchProject"
+        />
+        <van-card class="card" wx:for="{{ comps }}" wx:for-item="comp" wx:key="id" data-recordNo="{{comp.recordNo}}" data-index="{{index}}" data-id="{{comp.id}}" bindtap="bindPeopleTap"
+      title="交易账户{{comp.id}}">
+      <view  class="price" slot="price">
+        <p>{{comp.risk!=""?'综合异常指数':''}}</p>
+      </view>
+      <view class="num" style="{{comp.risk>60?'color:red':'color:green'}}" slot="num">
+        <p>{{comp.risk!=null?comp.risk:'暂无'}}</p>
+      </view>
+    </van-card>
+        <!-- <van-card class="card" wx:for="{{ projects }}" wx:for-item="project" data-index="{{index}}" data-id="{{project.id}}" bindtap="bindProjectTap" title="{{project.title}}">
+        <view class="card_desc" slot="desc">
+          <p class="pcomp">\n</p>
+          <p class="pcomp_title">投标企业:</p>
+          <p>{{project.relatedComp}}</p>
+          <p class="pcomp">\n</p>
+        </view>
+        <view  class="price" slot="price">
+          <p>{{project.risk!=""?'综合异常指数':''}}</p>
+        </view>
+        <view class="num" style="{{project.risk>60?'color:red':'color:green'}}" slot="num">
+          <p>{{project.risk!=null?project.risk:'暂无'}}</p>
+        </view>
+      </van-card> -->
+          <p class="bchain">*数据取自可信中国区块链</p>
+      </van-tab>
+
+      <van-tab title="查交易">
+         <van-search
+          input-align="center"
+          placeholder="请输入热点事件名等关键词"
+          bind:search="onSearchEvent"
+        />
+        <van-card class="card" wx:for="{{ transactions }}" wx:for-item="transaction" wx:key="id" data-recordNo="{{ransaction.recordNo}}" data-index="{{index}}" data-id="{{transaction.id}}" data-gid="{{transaction.gid}}" bindtap="bindTranTap"
+      title="{{transaction.prod_name}}"
+      desc="{{transaction.abnormal_analysis}}">
+      <view  class="price" slot="price">
+        <!-- <p>{{transaction.order_status!="申请通过"?transaction.abnormal_analysis:''}}</p> -->
+        <p>{{transaction.order_status}}</p>
+      </view>
+      <!-- <view class="num" style="{{transaction.order_status!="申请通过"?'color:red':'color:green'}}" slot="num">
+        <p>{{comp.risk!=null?comp.risk:'暂无'}}</p>
+      </view> -->
+    </van-card>
+          <p class="bchain">*数据取自可信中国区块链</p>
+      </van-tab>
+      <van-tab title="查地址">
+        <van-cell-group title="地址解析">
+          <van-field
+            model:value="{{ addr }}"
+            center
+            clearable
+            label="地址"
+            placeholder="请输入要查询的地址"
+            border="{{ false }}"
+            use-button-slot
+          >
+            <van-button slot="button" size="small" type="primary" bind:click="parseAddr">
+              地址解析
+            </van-button>
+          </van-field>
+        </van-cell-group>
+        <view wx:if="{{parseAddr}}">
+          <van-cell-group inset title="地址详情">
+            <van-cell wx:if="{{parseAddr.province}}" title="省" value="{{parseAddr.province}}" />
+            <van-cell wx:if="{{parseAddr.city}}" title="市" value="{{parseAddr.city}}" />
+            <van-cell wx:if="{{parseAddr.district}}" title="区/县" value="{{parseAddr.district}}" />
+            <van-cell wx:if="{{parseAddr.street}}" title="街道" value="{{parseAddr.street}}" />
+            <van-cell wx:if="{{parseAddr.village}}" title="村" value="{{parseAddr.village}}" />
+            <van-cell wx:if="{{parseAddr.road}}" title="路" value="{{parseAddr.road}}" />
+            <van-cell wx:if="{{parseAddr.text}}" title="建筑物" value="{{parseAddr.text}}" />
+            <van-cell wx:if="{{parseAddr.buildingNum}}" title="明细" value="{{parseAddr.buildingNum}}" />
+          </van-cell-group>
+        </view>
+        <van-cell-group title="地址相似度匹配">
+          <van-field
+            model:value="{{ addr1 }}"
+            center
+            clearable
+            label="地址1"
+            placeholder="请输入要查询的地址1"
+            border="{{ false }}"
+          >
+          </van-field>
+          <van-field
+            model:value="{{ addr2 }}"
+            center
+            clearable
+            label="地址2"
+            placeholder="请输入要查询的地址2"
+            border="{{ false }}"
+            use-button-slot
+          >
+          <van-button slot="button" size="small" type="primary" bind:click="similarity">
+              地址比较
+            </van-button>
+          </van-field>
+        </van-cell-group>
+        <view wx:if="{{comRes!=null}}">
+          <van-cell-group inset title="比对结果">
+            <van-cell wx:if="{{comRes!=null}}" title="比对分数" value="{{comRes}}" />
+          </van-cell-group>
+        </view>
+      </van-tab>
+  </van-tabs>  
+</view>
+
+

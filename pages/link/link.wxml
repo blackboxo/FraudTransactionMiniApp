@@ -1,0 +1,31 @@
+<van-row>
+  <van-col span="12"><van-card class="card"
+      desc="{{'综合风险指数'+source[2]}}"
+      title="{{source[0]}}">
+
+</van-card></van-col>
+<van-col span="12"><van-card class="card"
+      title="{{target[0]}}">
+
+</van-card></van-col>
+</van-row>
+
+   <scroll-view>
+
+    <view class="hop"> 
+    <van-button class="button" plain="{{hopIndex!=2?true:false}}" type="primary" bindtap="hop" data-hop="2" size="small">二度关系</van-button>
+    <van-button class="button" plain="{{hopIndex!=3?true:false}}" type="primary" bindtap="hop" data-hop="3" size="small">三度关系</van-button>
+    <van-button class="button" plain="{{hopIndex!=4?true:false}}" type="primary" bindtap="hop" data-hop="4" size="small">四度关系</van-button>
+    </view>
+    <view class="hop"> 
+    <van-button class="button" plain="{{lineIndex!='BID_FOR'?true:false}}" type="warning" bindtap="line" data-line="BID_FOR" size="small">投标关系</van-button>
+    <van-button class="button" plain="{{lineIndex!='OWNED_BY'?true:false}}" type="warning" bindtap="line" data-line="OWNED_BY" size="small">股东关系</van-button>
+    <van-button class="button" plain="{{lineIndex!='INVEST_IN'?true:false}}" type="warning" bindtap="line" data-line="INVEST_IN" size="small">投资关系</van-button>
+    </view>
+    <view class="load" hidden="{{!loading}}">
+    <van-loading color="#1989fa" />
+    </view>
+    <view class="echart">
+      <ec-canvas id="mychart-dom-bar" type="2d" canvas-id="mychart-bar" ec="{{ ec }}"></ec-canvas>
+    </view>
+  </scroll-view> 

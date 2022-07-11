@@ -1,0 +1,59 @@
+<!--pages/gyljr/tongbao2/tongbao_comp_detail/tongbao_comp_detail.wxml-->
+<view class="tourong">
+  <p class="block">融资历史</p> 
+  <van-card class="card" title="会员0020">
+    <view class="card_desc" slot="desc">
+            <p>融资机构:融资机构01\n</p>
+            <p>公布时间:2019-01-18</p>
+          </view>
+    <view  class="price" slot="price">
+      <p>金额:300000000元 </p>
+    </view>
+    <view class="time" slot="num">
+      <p>1</p>
+    </view>
+  </van-card>
+  <van-card class="card" title="会员0020">
+    <view class="card_desc" slot="desc">
+            <p>融资机构:融资机构02\n</p>
+            <p>公布时间:2019-12-12</p>
+          </view>
+    <view  class="price" slot="price">
+      <p>金额:1000000000元 </p>
+    </view>
+    <view class="time" slot="num">
+      <p>2</p>
+    </view>
+  </van-card>
+  <p class="block">通宝开立数据</p> 
+  <van-card class="card" title="接收方：0320">
+    <van-tag slot="tag" type="success">已兑付</van-tag>
+    <view class="card_desc" slot="desc">
+            <p>开立时间:2019-12-26\n</p>
+            <p>兑付时间:2020-06-23</p>
+          </view>
+    <view  class="price" slot="price">
+      <p>开立金额:29732482.31元 </p>
+    </view>
+    <view class="time" slot="num">
+      <p>1</p>
+    </view>
+  </van-card>
+</view>
+<p class="block">企业授信信息</p> 
+<view class="basic_info">
+    <van-cell value="会员0020">
+      <view slot="title">
+        <view style="display: inline; padding-right: 10rpx;">开立方</view>
+        <van-tag type="danger">核心企业</van-tag>
+      </view>
+    </van-cell>
+    <van-cell title="实收资本" value="500000000元" />
+    <van-cell title="是否上市" value="否" />
+    <van-cell title="融资机构01" value="300000000元" />
+    <!-- <van-cell title="法人代表" value="{{comp.basic.LAW_PERSON}}" /> -->
+    <van-cell title="融资机构02" value="1000000000元" />
+    <van-cell title="融资机构03" value="有授信额度" />
+    <van-cell title="融资机构04" value="有授信额度" />
+    <!-- <van-cell title="年报公示状态" value="{{comp.basic.ANNUAL_CHECK}}" /> -->
+</view>

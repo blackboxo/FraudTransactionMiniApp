@@ -1,0 +1,37 @@
+
+<view>
+  <p class="title_block">交易信息</p> 
+  <p class="block">交易主体</p> 
+  <van-cell title="交易发起方" value="{{source_name}}"></van-cell>
+  <van-cell title="交易接受方" value="{{target_name}}"></van-cell>
+  <p class="block">风险类型</p> 
+  <van-cell title="风险类型" value="虚假融资"></van-cell>
+  <p class="block">风险维度</p> 
+  <van-cell v-if="{{analysis['zijinliu']}}" title="资金流" use-label-slot>
+    <view slot="label">
+      {{analysis['zijinliu']}}
+    </view>
+  </van-cell>
+  <van-cell v-if="{{analysis['hehuoguanxi']}}" title="合伙关系" use-label-slot>
+    <view slot="label">
+      {{analysis['hehuoguanxi']}}
+    </view>
+  </van-cell>
+  <van-cell v-if="{{analysis['qitaguanxi']}}" title="其他关系" use-label-slot>
+    <view slot="label">
+      {{analysis['qitaguanxi']}}
+    </view>
+  </van-cell>
+  <p class="block">风险图谱</p> 
+  <scroll-view>
+    <view class="echart" style="{{loading?'margin-left:50000rpx':'margin-left:0px'}}">
+      <ec-canvas id="mychart-dom-bar2" type="2d" canvas-id="mychart-bar2" ec="{{ ec }}" ></ec-canvas>
+    </view>
+  </scroll-view> 
+  <!-- <van-cell title="风险图谱" value="内容" use-label-slot>
+    <view slot="label">
+      描述
+    </view>
+  </van-cell> -->
+</view>
+

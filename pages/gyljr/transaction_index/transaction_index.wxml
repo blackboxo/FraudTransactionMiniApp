@@ -1,0 +1,238 @@
+
+<view>
+  <view class="header">
+  <p class="head">供应链金融｜</p>
+  <p class="summary">穿透式挖掘\n全要素、可视化\n</p>
+  </view>
+  <van-tabs active="{{ active }}" bind:change="onChange">
+    <van-tab title="内容概览">
+    <!-- TODO:概览部分 -->
+  <van-cell-group inset>
+    <van-cell title="概览" use-label-slot>
+      <view slot="label">
+        <!-- 数据来源  -->
+        <view style="margin-top:5px"> 
+          <van-tag type="danger" size="medium">异常类型</van-tag>
+          <p style="margin-left:20px">{{general['abnormal_type']}}</p>
+        </view>
+        <!-- 异常类型  -->
+        <view style="margin-top:5px">
+          <van-tag type="success" size="medium">数据来源</van-tag>
+          <p style="margin-left:20px">
+            {{general['data_resource']}}
+          </p>
+        </view>
+        <!-- 关系 -->
+        <view style="margin-top:5px">
+          <van-tag type="warning" size="medium">关系类型</van-tag>
+          <p style="margin-left:20px">{{general['relations']}}</p>
+        </view>
+        <!-- xx家供应商 xx家金融机构 xx家核心企业 xx个人 -->
+        <!-- <view>{{general['nodes']}}</view> -->
+        <view class='card-container'>
+          <view class='mycard'>
+            <!-- <p style="font-size:20px">{{general['nodes']['gys']}}</p> -->
+            <p style="font-size:20px">65</p>
+            <p>供应商</p>
+          </view>
+          <view class='mycard' style="background:#f29b73">
+            <!-- <p style="font-size:20px">{{general['nodes']['jrjg']}}</p> -->
+            <p style="font-size:20px">8</p>
+            <p>金融机构</p>
+          </view>
+          <view class='mycard' style="background:#1e50a2">
+            <!-- <p style="font-size:20px">{{general['nodes']['hxqy']}}</p> -->
+            <p style="font-size:20px">35</p>
+            <p>核心企业</p>
+          </view>
+        </view>
+        <!-- <view style="margin-top:15px">
+          <van-grid column-num="3" gutter="{{20}}" square>
+            <van-grid-item icon="home-o" text="{{general['nodes']['gys']}}供应商" icon-size="15px" wx:for="{{3}}" />
+          </van-grid>
+        </view> -->
+      </view>
+    </van-cell>
+  </van-cell-group>
+  <!-- TODO：总览部分 -->
+  <!-- <van-cell-group title="交易查询">
+    <van-field
+      model:value="{{ comp1 }}"
+      center
+      clearable
+      label="企业1"
+      placeholder="企业名称"
+      border="{{ false }}"
+    >
+    </van-field>
+    <van-field
+      model:value="{{ comp2 }}"
+      center
+      clearable
+      label="企业2"
+      placeholder="企业名称"
+      border="{{ false }}"
+      use-button-slot
+    >
+    <van-button slot="button" size="small" type="primary" bind:click="searchTransaction">
+        查询交易
+      </van-button>
+    </van-field>
+  </van-cell-group> -->
+  <view wx:if="{{comRes!=null}}">
+    <van-cell-group inset title="比对结果">
+      <van-cell wx:if="{{comRes!=null}}" title="比对分数" value="{{comRes}}" />
+    </van-cell-group>
+  </view>
+  <!-- 事件列表 -->
+  <view>
+    <!-- <view style="display:flex;justify-content:space-around;margin-top:20rpx">
+      <view>
+        <van-tag type="danger" plain>虚假融资</van-tag>
+        <p style="font-size:30rpx;margin-left:20rpx">8个</p>
+      </view>
+      <view>
+        <van-tag type="danger">重复融资</van-tag>
+        <p style="font-size:30rpx;margin-left:20rpx">4个</p>
+      </view>
+    </view> -->
+    <!-- <van-card class="card" wx:for="{{ transactions }}" wx:for-item="transaction" wx:key="id" data-id="{{transaction.id}}" data-sourceName="{{transaction.source_name}}" data-targetName="{{transaction.target_name}}" data-event="{{transaction.event}}" bindtap="bindViewTap" title="交易事件{{index+1}}">
+      <view slot="desc">
+        <view style="margin:5px">
+          <view style="font-weight:bold">交易主体：</view>
+          <view>{{transaction['source_name']}} vs {{transaction['target_name']}}</view>
+          <view><p style="font-weight:bold">交易金额</p>：{{transaction.amount}}</view>
+        </view>
+      </view>
+      <view slot="price">
+        <view>
+          <van-tag type="primary" plain>{{transaction.time}}</van-tag>
+        </view>
+      </view>
+    </van-card> -->
+    <van-card class="card" wx:for="{{ tb_data_list}}" wx:for-item="transaction" wx:key="id" data-id="{{transaction['通宝编号']}}" data-source_name="{{transaction['来源企业']}}" data-target_name="{{transaction['本次通宝接收方']}}" bindtap="bindViewTap2" title="交易事件{{index+1}}">
+      <view slot="desc">
+        <view style="margin:5px">
+          <view style="font-weight:bold">交易主体：</view>
+          <view>{{transaction['来源企业']}} vs {{transaction['本次通宝接收方']}}</view>
+          <view><p style="font-weight:bold">交易金额</p>：{{transaction['初始通宝接收金额(元)']}}元</view>
+        </view>
+      </view>
+      <view slot="price">
+        <view>
+          <van-tag type="primary" plain>{{transaction['接收时间']}}</van-tag>
+        </view>
+      </view>
+    </van-card>
+  </view>
+  <p class="bchain">*数据取自可信中国区块链</p>
+    </van-tab>
+    <van-tab title="交易查询">
+      <view>
+        <view class="_title">交易信息</view>
+        <van-cell-group>
+          <!-- <van-field
+            model:value="{{ debt_receivable_to_approval}}"
+            label="待审批账款"
+            placeholder="请输入待审批账款笔数"
+          />
+          <van-field
+            model:value="{{ debt_receivable_passed }}"
+            label="已通过账款"
+            placeholder="请输入已通过账款笔数"
+          />
+          <van-field
+            model:value="{{ debt_receivable_not_passed }}"
+            label="已拒绝账款"
+            placeholder="请输入已拒绝账款笔数"
+          /> -->
+          <van-field
+            model:value="{{ amount }}"
+            label="金额"
+            placeholder="请输入放款金额"
+          />
+          <van-field
+            model:value="{{ currency }}"
+            label="币种"
+            placeholder="请输入币种"
+          />
+          <van-field
+            model:value="{{ allotted_time }}"
+            label="账款期限"
+            placeholder="请输入账款期限（天）"
+          />
+          <van-field
+            model:value="{{ transaction_type }}"
+            label="交易类型"
+            placeholder="请输入交易类型"
+          />
+          <!-- <van-field
+            model:value="{{ financing_mode }}"
+            label="融资模式"
+            placeholder="请输入融资模式"
+          />
+          <van-field
+            model:value="{{ financing_products }}"
+            label="融资产品"
+            placeholder="请输入融资产品"
+          /> -->
+          <van-field
+            model:value="{{ debt_source }}"
+            label="账款来源"
+            placeholder="请输入账款来源"
+          />
+        </van-cell-group>
+        <view class="_title">交易参与方</view>
+        <van-cell-group>
+          <van-field
+            model:value="{{ debtor }}"
+            placeholder="请输入债务人"
+            label="还款方(买方)"
+          />
+          <van-field
+            model:value="{{ debtee }}"
+            placeholder="请输入债权人"
+            label="发起者(卖方)"
+          />
+          <van-field
+            model:value="{{ fund_provider }}"
+            label="资金提供方"
+            placeholder="请输入资金提供方"
+          />
+        </van-cell-group>
+        <view class="btn_area">
+          <van-button block color="#187ef9" bind:click="confirm">交易风险分析</van-button>
+        </view>
+      </view>
+    </van-tab>
+    <!-- <van-tab title="历史查询" style="min-height: 80vh;">
+      <view>
+        <van-field
+          model:value="{{ tb_number }}"
+          label="历史交易编号"
+          placeholder="请输入历史交易编号">
+          <van-button slot="button" size="small" type="primary" bind:click="searchTBData">
+            查询
+          </van-button>
+        </van-field>
+
+      </view>
+    </van-tab> -->
+  </van-tabs>
+<!-- <view wx:if="{{show}}">
+  <view>
+    <block wx:for='{{tb_data}}' wx:key="index">
+      <view style="padding: 5rpx 30rpx; color: #797676dc; height: 50px;width: 100%;display: flex;">
+        <image style="height: 50rpx;width: 50rpx;border-radius: 100rpx;margin-top: 30rpx;" src='{{avatarUrl}}'></image>
+        <view>{{item['来源企业']}}转让金额{{item['初始通宝接收金额(元)']}}元给{{item['本次通宝接收方']}}
+        </view>
+      </view>
+    </block>
+  </view>
+  <view class="myEchart" >
+    <ec-canvas id="mychart-dom-bar11" canvas-id="mychart-bar11" ec="{{ ec }}" ></ec-canvas>
+  </view>
+</view> -->
+
+
+</view>

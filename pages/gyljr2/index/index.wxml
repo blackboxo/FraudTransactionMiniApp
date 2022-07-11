@@ -1,0 +1,82 @@
+<!--pages/gyljr/index/index.wxml-->
+<view>
+  <view class="header">
+  <p class="head">供应链金融｜</p>
+  <p class="summary">穿透式挖掘\n全要素、可视化\n</p>
+  </view>
+  <!-- TODO:概览部分 -->
+  <van-cell-group inset>
+    <van-cell title="概览" use-label-slot>
+      <view slot="label">
+        <!-- 数据来源  -->
+        <view style="margin-top:5px"> 
+          <van-tag type="danger" size="medium">异常类型</van-tag>
+          <p style="margin-left:20px">{{general['abnormal_type']}}</p>
+        </view>
+        <!-- 异常类型  -->
+        <view style="margin-top:5px">
+          <van-tag type="success" size="medium">数据来源</van-tag>
+          <p style="margin-left:20px">
+            {{general['data_resource']}}
+          </p>
+        </view>
+        <!-- 关系 -->
+        <view style="margin-top:5px">
+          <van-tag type="warning" size="medium">关系类型</van-tag>
+          <p style="margin-left:20px">{{general['relations']}}</p>
+        </view>
+        <!-- xx家供应商 xx家金融机构 xx家核心企业 xx个人 -->
+        <!-- <view>{{general['nodes']}}</view> -->
+        <view class='card-container'>
+          <view class='mycard'>
+            <!-- <p style="font-size:20px">{{general['nodes']['gys']}}</p> -->
+            <p style="font-size:20px">13</p>
+            <p>供应商</p>
+          </view>
+          <view class='mycard' style="background:#f29b73">
+            <!-- <p style="font-size:20px">{{general['nodes']['jrjg']}}</p> -->
+            <p style="font-size:20px">12</p>
+            <p>金融机构</p>
+          </view>
+          <view class='mycard' style="background:#1e50a2">
+            <!-- <p style="font-size:20px">{{general['nodes']['hxqy']}}</p> -->
+            <p style="font-size:20px">11</p>
+            <p>核心企业</p>
+          </view>
+        </view>
+        <!-- <view style="margin-top:15px">
+          <van-grid column-num="3" gutter="{{20}}" square>
+            <van-grid-item icon="home-o" text="{{general['nodes']['gys']}}供应商" icon-size="15px" wx:for="{{3}}" />
+          </van-grid>
+        </view> -->
+      </view>
+    </van-cell>
+  </van-cell-group>
+  <!-- TODO：总览部分 -->
+  <!-- 事件列表 -->
+  <view>
+    <view style="display:flex;justify-content:space-around;margin-top:20rpx">
+      <view>
+        <van-tag type="danger" plain>虚假融资</van-tag>
+        <p style="font-size:30rpx;margin-left:20rpx">8个</p>
+      </view>
+      <view>
+        <van-tag type="danger">重复融资</van-tag>
+        <p style="font-size:30rpx;margin-left:20rpx">4个</p>
+      </view>
+    </view>
+    <van-card class="card" wx:for="{{ events }}" wx:for-item="event" wx:key="id" data-id="{{event.id}}" data-name="{{event.name}}" bindtap="bindViewTap"
+        title="{{event.name}}"
+        desc="{{event.info}}"
+      >
+      <view slot="price">
+        <view>
+          <van-tag type="danger" plain>{{event.type}}</van-tag>
+        </view>
+      </view>
+    </van-card>
+  </view>
+
+  <p class="bchain">*数据取自可信中国区块链</p>
+
+</view>

@@ -1,0 +1,143 @@
+{
+  "description": "项目配置文件",
+  "packOptions": {
+    "ignore": []
+  },
+  "setting": {
+    "urlCheck": false,
+    "es6": true,
+    "enhance": false,
+    "postcss": true,
+    "preloadBackgroundData": false,
+    "minified": true,
+    "newFeature": true,
+    "coverView": true,
+    "nodeModules": true,
+    "autoAudits": false,
+    "showShadowRootInWxmlPanel": true,
+    "scopeDataCheck": false,
+    "uglifyFileName": false,
+    "checkInvalidKey": true,
+    "checkSiteMap": true,
+    "uploadWithSourceMap": true,
+    "compileHotReLoad": false,
+    "lazyloadPlaceholderEnable": false,
+    "useMultiFrameRuntime": false,
+    "useApiHook": false,
+    "useApiHostProcess": false,
+    "babelSetting": {
+      "ignore": [],
+      "disablePlugins": [],
+      "outputPath": ""
+    },
+    "useIsolateContext": false,
+    "userConfirmedBundleSwitch": false,
+    "packNpmManually": true,
+    "packNpmRelationList": [
+      {
+        "packageJsonPath": "./package.json",
+        "miniprogramNpmDistDir": "./miniprogram/"
+      }
+    ],
+    "minifyWXSS": true,
+    "disableUseStrict": false,
+    "minifyWXML": true,
+    "showES6CompileOption": false,
+    "useCompilerPlugins": false,
+    "ignoreUploadUnusedFiles": true
+  },
+  "compileType": "miniprogram",
+  "libVersion": "2.10.3",
+  "appid": "wxda45bdc922e9cd4e",
+  "projectname": "digitalCoinMiniApp",
+  "debugOptions": {
+    "hidedInDevtools": []
+  },
+  "isGameTourist": false,
+  "simulatorType": "wechat",
+  "simulatorPluginLibVersion": {},
+  "condition": {
+    "search": {
+      "list": []
+    },
+    "conversation": {
+      "list": []
+    },
+    "plugin": {
+      "list": []
+    },
+    "game": {
+      "currentL": -1,
+      "list": []
+    },
+    "gamePlugin": {
+      "list": []
+    },
+    "miniprogram": {
+      "list": [
+        {
+          "id": -1,
+          "name": "graph",
+          "pathName": "pages/graph/graph",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/project/project",
+          "pathName": "pages/project/project",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/consensus/consensus",
+          "pathName": "pages/consensus/consensus",
+          "query": "",
+          "scene": null
+        },
+        {
+          "id": 3,
+          "name": "pages/link/link",
+          "pathName": "pages/link/link",
+          "query": "source=2&target=77",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/graph/graph",
+          "pathName": "pages/graph/graph",
+          "query": "source=2&target=77",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/holder/holder",
+          "pathName": "pages/holder/holder",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/tourong/tourong",
+          "pathName": "pages/tourong/tourong",
+          "query": "id=2",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/project/project",
+          "pathName": "pages/project/project",
+          "query": "id=708",
+          "scene": null
+        },
+        {
+          "id": -1,
+          "name": "pages/report/report",
+          "pathName": "pages/report/report",
+          "scene": null
+        }
+      ]
+    }
+  }
+}

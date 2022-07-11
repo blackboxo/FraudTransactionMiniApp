@@ -1,0 +1,12 @@
+/* pages/gyljr/transaction_input/transaction_input.wxss */
+._title{
+  padding: 20rpx 20rpx;
+  color: rgb(107, 88, 88);
+  font-weight: bold;
+}
+.btn_area{
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  padding: 40rpx 70rpx;
+}

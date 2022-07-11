@@ -1,0 +1,55 @@
+
+<view style="background-color:#eeeeee; min-height: 100%;">
+  <view style="padding-top: 20px;">
+    <van-cell-group inset custom-class="group">
+      <van-cell center title="交易风险评估报告" label="多维度直击交易欺诈风险">
+        <view>
+          <van-button round type="primary">查询报告</van-button>
+        </view>
+      </van-cell>
+      <van-cell center use-label-slot title="企业黑名单检测">
+        <view>
+          <van-button round type="info">查询报告</van-button>
+        </view>
+        <view slot="label">
+          <p>查询企业行业不良信息</p>
+          <p>查询企业基本信息</p>
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+  <view style="margin:10rpx;padding: 30rpx;">
+    <van-grid column-num="3" style="border-radius: 20rpx;" custom-class="grid">
+      <van-grid-item icon="wap-home-o" icon-color="green" text="供应商" badge="65">
+      </van-grid-item>
+      <van-grid-item icon="balance-o" icon-color="green" text="金融机构" badge="8"/>
+      <van-grid-item icon="manager-o" icon-color="green" text="核心企业" badge="35" />
+      <van-grid-item icon="qr" text="异常类型" />
+      <van-grid-item icon="description" text="数据类型" />
+      <van-grid-item icon="exchange" text="关系类型" />
+    </van-grid>
+  </view>
+  <view style="margin:10rpx 0rpx;">
+    <van-cell-group inset>
+      <van-cell title="新手必读" value="学习新知识" use-label-slot>
+        <view slot="label">
+          <!-- <view style="display: flex;justify-content: space-around;">
+            <view style="">
+              <p>图文教学</p>
+            </view>
+            <view style="">
+              <p>意见反馈</p>
+            </view>
+          </view> -->
+        </view>
+      </van-cell>
+    </van-cell-group>
+  </view>
+
+  <van-tabbar placeholder active="{{ tabActive }}" bind:change="tabChange">
+    <van-tabbar-item icon="home-o">首页</van-tabbar-item>
+    <van-tabbar-item icon="search">查企业</van-tabbar-item>
+    <van-tabbar-item icon="friends-o">查交易</van-tabbar-item>
+    <van-tabbar-item icon="chat-o">风险管家</van-tabbar-item>
+  </van-tabbar>
+</view>
